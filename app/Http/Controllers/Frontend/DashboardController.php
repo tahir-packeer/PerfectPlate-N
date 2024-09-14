@@ -13,6 +13,7 @@ class DashboardController extends Controller
         $orders = Order::where('user_id', Auth::id())->with('items')->get();
         $user = auth()->user();
         $notifications = json_decode($user->notifications, true);
+        $notifications = array_reverse($notifications);
         return view('frontend.dashboard.index', compact('orders', 'notifications'));
     }
 

@@ -38,12 +38,35 @@ class OrderController extends Controller
             $order->status = $request->status;
             $order->save();
 
+            // Add notification with order ID and status
+            $user = $order->user;
+            $this->addNotification($user, 'Order status updated', 'Your order #'.$order->id.' status has been updated to '.$order->status);
+
             session()->flash('success', 'Order status updated successfully!');
         } catch (\Exception $e) {
             session()->flash('error', 'There was a problem updating the order status.');
         }
 
         return redirect()->route('order.index');
+    }
+
+    /**
+     * Helper method to add a notification to a user
+     */
+    private function addNotification($user, $type, $message)
+    {
+        $notifications = json_decode($user->notifications, true) ?? [];
+        $newId = count($notifications) > 0 ? max(array_column($notifications, 'id')) + 1 : 0;
+
+        $newNotification = [
+            'id' => $newId,
+            'type' => $type,
+            'message' => $message,
+        ];
+
+        $notifications[] = $newNotification;
+        $user->notifications = json_encode($notifications);
+        $user->save();
     }
 
     /**
