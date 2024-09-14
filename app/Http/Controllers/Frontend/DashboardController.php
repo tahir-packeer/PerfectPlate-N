@@ -9,13 +9,13 @@ use App\Models\Order;
 
 class DashboardController extends Controller
 {
-    // Display the user dashboard with their orders
     public function index(): View {
         $orders = Order::where('user_id', Auth::id())->with('items')->get();
-        return view('frontend.dashboard.index', compact('orders'));
+        $user = auth()->user();
+        $notifications = json_decode($user->notifications, true);
+        return view('frontend.dashboard.index', compact('orders', 'notifications'));
     }
 
-    // Display a specific order invoice
     public function showOrderInvoice($id): View {
         $order = Order::with('items')->findOrFail($id);
         return view('frontend.dashboard.invoice', compact('order'));

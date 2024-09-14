@@ -64,6 +64,7 @@
                     <li><a class="nav-link" href={{ route('category.index') }}>Product Categories</a></li>
                     <li><a class="nav-link" href={{ route('product.index') }}>Products</a></li>
                     <li><a class="nav-link" href={{ route('order.index') }}>Orders</a></li>
+                    <li><a class="nav-link" href={{ route('admin.notifications') }}>Notifications</a></li>
                 </ul>
             </li>
             <li class="dropdown">

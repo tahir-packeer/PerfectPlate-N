@@ -62,6 +62,9 @@ Route::resource('product', ProductController::class)->except(['show']);
 
 Route::resource('order', OrderController::class)->except(['create', 'store']);
 
+//Admin notifications route
+Route::get('admin/notifications', [AdminDashboardController::class, 'notifications'])->name('admin.notifications');
+
 //manage product gallery
 Route::get('product-gallery/{product}',[ProductGalleryController::class,'index'])->name('product-gallery.show-index');
 Route::resource('product-gallery', ProductGalleryController::class);
