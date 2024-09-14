@@ -12,7 +12,9 @@ class DashboardController extends Controller
     // Display the user dashboard with their orders
     public function index(): View {
         $orders = Order::where('user_id', Auth::id())->with('items')->get();
-        return view('frontend.dashboard.index', compact('orders'));
+        $user = auth()->user();
+        $notifications = json_decode($user->notifications, true);
+        return view('frontend.dashboard.index', compact('orders', 'notifications'));
     }
 
     // Display a specific order invoice
