@@ -51,15 +51,15 @@ class CheckoutController extends Controller
 
         // Add notification for the current user
         $currentUser = auth()->user();
-        $this->addNotification($currentUser, 'Order created', 'Your order has been placed successfully!');
+        $this->addNotification($currentUser, 'Order created', 'Your order #'.$order->id.' has been placed successfully!');
 
-        // Add notification for the admin user
         $adminUser = User::where('role', 'admin')->first();
         if ($adminUser) {
-            $this->addNotification($adminUser, 'New order', 'A new order has been placed.');
+            $this->addNotification($adminUser, 'New order', 'A new order #'.$order->id.' has been placed.');
         }
 
         return redirect()->route('order.success')->with('message', 'Order placed successfully!');
+
     }
 
     /**
