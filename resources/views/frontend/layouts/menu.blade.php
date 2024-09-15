@@ -1,10 +1,10 @@
 <nav class="navbar navbar-expand-lg main_menu">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
-            <img src="" alt="PerfectPlate" class="img-fluid">
+            <img src="{{ asset('assets/img/logo_web.jpg') }}" style=" height: 50px !important;width: 100px !important;" alt="PerfectPlate" class="img-fluid">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <i class="far fa-bars"></i>
         </button>
         <div class="navbar-collapse collapse" id="navbarNav">
@@ -35,7 +35,7 @@
                     @endphp
 
                     <li>
-                        <a href="{{ route('dashboard') }}" class="notification_icon">
+                        <a href="{{ route('notifications') }}" class="notification_icon">
                             <i class="fas fa-bell"></i>
                             <span class="notification_count">
                                 {{ count($notifications) }}
@@ -63,11 +63,11 @@
                 <li>
                     <div class="menu_cart_img">
                         <img src="{{ asset($cartProduct->options->product_info['image']) }}" alt="menu"
-                            class="img-fluid w-100">
+                             class="img-fluid w-100">
                     </div>
                     <div class="menu_cart_text">
                         <a class="title"
-                            href="{{ route('product.show', $cartProduct->options->product_info['slug']) }}">
+                           href="{{ route('product.show', $cartProduct->options->product_info['slug']) }}">
                             {!! $cartProduct->name !!}
                         </a>
                         <p class="size">Qty: {{ $cartProduct->qty }}</p>
@@ -97,7 +97,7 @@
 
 <div class="fp__reservation">
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+         aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">

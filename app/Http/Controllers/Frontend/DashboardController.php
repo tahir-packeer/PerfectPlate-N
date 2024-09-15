@@ -11,10 +11,13 @@ class DashboardController extends Controller
 {
     public function index(): View {
         $orders = Order::where('user_id', Auth::id())->with('items')->get();
+        return view('frontend.dashboard.index', compact('orders'));
+    }
+    public function notifications(): View {
         $user = auth()->user();
         $notifications = json_decode($user->notifications, true);
         $notifications = array_reverse($notifications);
-        return view('frontend.dashboard.index', compact('orders', 'notifications'));
+        return view('frontend.dashboard.notifications', compact('notifications'));
     }
 
     public function showOrderInvoice($id): View {

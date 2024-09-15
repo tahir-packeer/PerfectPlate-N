@@ -55,6 +55,7 @@
                         <select name="status" id="status" class="form-control">
                             <option value="pending" {{ $order->status == 'pending' ? 'selected' : '' }}>Pending</option>
                             <option value="accepted" {{ $order->status == 'accepted' ? 'selected' : '' }}>Accepted</option>
+                            <option value="pickup from canteen" {{ $order->status == 'Pickup from canteen' ? 'selected' : '' }}>Pickup from canteen</option>
                             <option value="completed" {{ $order->status == 'completed' ? 'selected' : '' }}>Completed
                             </option>
                             <option value="rejected" {{ $order->status == 'rejected' ? 'selected' : '' }}>Rejected</option>
